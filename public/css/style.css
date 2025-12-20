@@ -1,0 +1,247 @@
+
+body {
+  font-family: "Work Sans", sans-serif !important;  /* Professional straight font */
+  font-weight: 400 !important;
+  color: #333 !important;
+}
+.filters
+{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.fa-solid 
+{
+  font-size: 1.6rem;
+}
+.filter{
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
+  opacity: 0.7;
+}
+.search-div
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.search-bar
+{
+  width: 100%;
+  height: 2.2rem;
+  border-radius: 1rem;
+  border: 1px solid #000000 !important;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.filter p
+{
+  font-size: 0.8rem;
+}
+.filter:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+.filters a
+{
+  text-decoration: none;
+  color: #333;
+}
+
+.navbar {
+  font-family: "Urbanist", sans-serif !important; /* Clean and modern */
+  font-weight: 600 !important; /* Slightly bold for visibility */
+}
+
+/* Navbar Links */
+.navbar a {
+  font-family: "Urbanist", sans-serif !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  color: #222 !important;
+}
+
+/* Hover effect */
+.navbar a:hover {
+  color: #007bff !important;
+}
+
+/* Headings */
+h1 {
+  font-weight: 800; /* ExtraBold */
+}
+
+h2, h3 {
+  font-weight: 600; /* SemiBold */
+}
+p{
+  font-weight: 500;
+}
+
+/* Buttons */
+button {
+  font-weight: 600; /* SemiBold */
+}
+
+/* Links */
+a {
+  font-weight: 500; /* Medium */
+  font-style: italic;
+}
+
+/* Blockquotes & Footers */
+blockquote, footer {
+  font-weight: 300; /* Light */
+  font-style: italic;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  border-bottom: 1px solid #ddd; /* Optional: Visual separation */
+}
+
+/* Main Content Padding */
+.row {
+  margin: 0; /* Remove margin */
+  padding-top: 2rem; /* Match navbar height */
+}
+
+/* FontAwesome Icon Styles */
+.fa-compass {
+  color: #fe424d;
+  font-size: 2.5rem;
+}
+.btn-search
+{
+  background-color: #fe424d !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1rem !important;
+  margin-top: 1rem !important;
+  cursor: pointer !important;
+  height: 2.2rem !important;
+
+}
+.btn-search i{
+  display: inline;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+.btn-search:hover
+{
+  background-color: #ff5a5f !important;
+  height: 2.2rem !important;
+}
+
+/* Navigation Links */
+.nav-link {
+  color: #222222 !important;
+}
+
+/* Footer */
+html, body {
+  height: 100%; /* Full viewport height */
+  margin: 0 !important; /* Remove default margins */
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #f0f0f0; /* Footer background */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  
+}
+
+.f-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.f-info-socials {
+  margin-bottom: 10px;
+}
+
+.f-info-socials i {
+  font-size: 20px;
+  margin: 0 10px;
+  color: #333; /* Default icon color */
+}
+
+.f-info-brand {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.f-info-links {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Cards */
+.card {
+  border: none !important;
+  margin-bottom: 1rem !important;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  object-fit: cover !important;
+  height: 15rem !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text p {
+  font-weight: 400;
+}
+
+.listing-link {
+  text-decoration: none !important;
+}
+
+
+
+/* Buttons */
+.btn {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure full viewport height */
+  margin: 0; /* Remove unnecessary margins */
+}
+
+/* Main Content */
+.main-content {
+  flex: 1; /* Allow content to grow and fill available space */
+}
+
+
+
+  
