@@ -1,0 +1,160 @@
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top w-100" style="min-height: 4.5rem; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+    <div class="container-fluid p-0">
+      <a class="navbar-brand fs-2 px-3 d-flex align-items-center" href="/listings" style="height: 4.5rem; padding: 0 1.5rem;">
+        <i class="fa-regular fa-compass"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link fs-5 px-3 d-flex align-items-center" href="/listings" style="height: 4.5rem; padding: 0 1.5rem;">Explore</a>
+          </li>
+        </ul>
+        
+        <form class="d-flex me-3 mb-3 mb-lg-0 align-items-center flex-column flex-lg-row w-100 w-lg-auto" role="search" action="/listings" method="GET">
+          <input class="form-control search-bar me-2 mb-2 mb-lg-0" type="search" name="query" placeholder="Search Destination" aria-label="Search">
+          <button class="btn btn-outline-success btn-search mb-2 mb-lg-0" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+        </form>
+
+        <ul class="navbar-nav d-flex align-items-center flex-column flex-lg-row w-100 w-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link fs-5 px-3 d-flex align-items-center" href="/listings/new" style="height: 4.5rem; padding: 0 1.5rem;">Airbnb your home</a>
+          </li>
+          <%if(!curUser){%>
+          <li class="nav-item">
+            <a class="nav-link fs-5 px-3 d-flex align-items-center" href="/signup" style="height: 4.5rem; padding: 0 1.5rem;">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 px-3 d-flex align-items-center" href="/login" style="height: 4.5rem; padding: 0 1.5rem;">Log in</a>
+          </li>
+          <%}%>
+          <%if(curUser){%>
+          <li class="nav-item">
+            <a class="nav-link fs-5 px-3 d-flex align-items-center" href="/logout" style="height: 4.5rem; padding: 0 1.5rem;">Log out</a>
+          </li>
+          <%}%>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<style>
+.navbar {
+  width: 100vw;
+  min-height: 4.5rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  padding: 0;
+}
+
+.navbar-brand, .nav-link {
+  height: 4.5rem !important;
+  padding: 0 1.5rem !important;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0 !important;
+}
+
+.navbar-brand {
+  color: var(--primary-color, #ff385c);
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.1);
+}
+
+.nav-link {
+  color: var(--text-color, #484848);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-color, #ff385c);
+}
+
+.search-bar {
+  border-radius: 20px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: var(--primary-color, #ff385c);
+  box-shadow: 0 0 0 0.2rem rgba(255, 56, 92, 0.25);
+}
+
+.btn-search {
+  border-radius: 20px;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color, #ff385c);
+  border-color: var(--primary-color, #ff385c);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-search:hover {
+  background-color: #e31c5f;
+  border-color: #e31c5f;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: static;
+        top: auto;
+        left: auto;
+        right: auto;
+        z-index: auto;
+        padding: 1rem 0;
+        margin: 0;
+        background: #fff;
+        box-shadow: none;
+    }
+    
+    .navbar-nav, .navbar-nav.d-flex {
+        flex-direction: column !important;
+        width: 100%;
+        align-items: stretch !important;
+        padding: 0;
+    }
+    
+    .nav-item {
+        padding: 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1.5rem !important;
+        margin-bottom: 0 !important;
+        justify-content: flex-start;
+    }
+
+    form[role="search"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+    }
+
+    .search-bar, .btn-search {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    .btn-search
+    {
+      width: 30%;
+    }
+}
+</style>
