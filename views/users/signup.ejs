@@ -1,0 +1,133 @@
+<% layout('/layouts/boilerplate')%>
+<body>
+  <div class="login-bg w-100" style="min-height: 100vh; width: 100vw; position: fixed; top: 0; left: 0;">
+    <div class="signup-flex-container d-flex justify-content-center">
+      <div class="login-card p-4 p-md-5 shadow rounded-4 w-100 signup-card-mt" style="max-width: 400px; position: relative; z-index: 2;">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold mb-1" style="font-family: 'Poppins', sans-serif;">Sign up for <span style="color: #ff385c;">Wander Lust</span></h2>
+          <p class="text-muted mb-0">Create your account to get started.</p>
+        </div>
+        <% if (typeof error !== 'undefined' && error && error.length > 0 && error !== 'You must login first') { %>
+          <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert" style="text-align: center;">
+            <%= error %>
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% } %>
+        <form action="/signup" method="post" class="needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" class="form-control border-dark" required autocomplete="username" />
+            <div class="valid-feedback">Username looks good!</div>
+            <div class="invalid-feedback">Please choose a valid username</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" id="email" name="email" class="form-control border-dark" required autocomplete="email" />
+            <div class="invalid-feedback">Please provide a valid email</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control border-dark" required autocomplete="new-password" />
+          </div>
+          <button type="submit" class="btn btn-primary w-100 py-2 mt-2">Sign Up</button>
+        </form>
+        <div class="text-center mt-3">
+          <span class="text-muted">Already have an account?</span>
+          <a href="/login" class="ms-1" style="color: #ff385c; font-weight: 500;">Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .login-bg {
+      background: linear-gradient(120deg, #f8fafc 0%, #fceabb 100%);
+      min-height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .login-card {
+      background: #fff;
+      border: none;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    .login-card:focus-within {
+      box-shadow: 0 8px 32px rgba(255,56,92,0.10);
+    }
+    .form-label {
+      font-weight: 500;
+      color: #333;
+    }
+    .form-control {
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e0e0e0;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      border-color: #ff385c;
+      box-shadow: 0 0 0 0.15rem rgba(255,56,92,0.10);
+    }
+    .btn-primary {
+      background-color: #ff385c;
+      border: none;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #e31c5f;
+    }
+    .signup-card-mt {
+      margin-top: 2rem;
+    }
+    /* Mobile: center vertically and horizontally */
+    @media (max-width: 576px) {
+      .signup-flex-container {
+        min-height: 100vh;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-card {
+       
+        border-radius: 1rem;
+      }
+      .login-bg {
+        padding: 0;
+      }
+      .signup-card-mt {
+        margin-top: 0;
+      }
+    }
+    /* Desktop: card just below navbar */
+    @media (min-width: 577px) {
+      .signup-flex-container {
+        min-height: 0;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+    @media (min-width: 992px) {
+      .signup-card-mt {
+        margin-top: 5.5rem !important;
+      }
+    }
+  </style>
+</body>
