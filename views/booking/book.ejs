@@ -1,0 +1,129 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="container mt-5">
+  <h3 class="mb-5 text-primary border-bottom pb-2">Book the room</h3>
+
+  <div class="card p-4">
+    <h5><%= listing.title %></h5>
+    <p>₹ <%= listing.price %> / night</p>
+
+    <form action="/listings/<%= listing._id %>/bookings" method="POST">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label>From</label> 
+          <input type="text" id="from" name="from" class="form-control" required>
+
+       </div>
+
+        <div class="col-md-6">
+          <label>To</label>
+          <input type="text" id="to" name="to" class="form-control" required>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- Price Breakdown -->
+      <div class="mb-2 d-flex justify-content-between">
+        <span>Nights × price</span>
+        <span id="basePrice">—</span>
+      </div>
+
+      <div class="mb-2 d-flex justify-content-between">
+        <span>GST (18%)</span>
+        <span id="gst">—</span>
+      </div>
+
+      <hr>
+
+      <div class="d-flex justify-content-between fw-bold">
+        <span>Total</span>
+        <span id="total">—</span>
+      </div>
+
+      <button class="btn btn-primary w-100 mt-4">
+        Proceed to payment
+      </button>
+    </form>
+
+<script>
+  const bookedRanges = <%- JSON.stringify(
+    bookings.map(b => ({
+      start: b.startDate,
+      end: b.endDate
+    }))
+  ) %>;
+
+  function isBooked(date) {
+    return bookedRanges.some(range => {
+      const start = new Date(range.start);
+      const end = new Date(range.end);
+      end.setDate(end.getDate() - 1);
+
+      start.setHours(0,0,0,0);
+    end.setHours(23,59,59,999);
+
+      return date >= start && date <= end;
+    });
+  }
+
+  flatpickr("#from, #to", {
+    minDate: "today",
+    dateFormat: "Y-m-d",
+    disable: bookedRanges.map(r => {
+      const end = new Date(r.end);
+      end.setDate(end.getDate() - 1);
+
+      return { from: r.start, to: end };
+    }),
+    onDayCreate(_, __, ___, dayElem) {
+      const date = dayElem.dateObj;
+
+      if (isBooked(date)) {
+        dayElem.classList.add("booked-day");
+      } else  if (date >= new Date()) {
+        dayElem.classList.add("available-day");
+      }
+    }
+  });
+</script>
+
+
+  <script>
+  const pricePerNight = <%= listing.price %>;
+
+  const startInput = document.querySelector('[name="from"]');
+  const endInput = document.querySelector('[name="to"]');
+
+
+  function calculate() {
+    if (!startInput.value || !endInput.value) return;
+
+    const start = new Date(startInput.value);
+    const end = new Date(endInput.value);
+
+    const nights = Math.round((end - start) / (1000 * 60 * 60 * 24));
+
+    if (nights < 1) {
+      document.getElementById("basePrice").innerText = "—";
+      document.getElementById("gst").innerText = "—";
+      document.getElementById("total").innerText = "—";
+      return;
+    }
+
+    const base = nights * pricePerNight;
+    const gst = base * 0.18;
+    const total = base + gst;
+
+    document.getElementById("basePrice").innerText = `₹ ${base}`;
+    document.getElementById("gst").innerText = `₹ ${gst.toFixed(0)}`;
+    document.getElementById("total").innerText = `₹ ${total.toFixed(0)}`;
+  }
+
+  startInput.addEventListener("change", calculate);
+  endInput.addEventListener("change", calculate);
+  
+</script>
+
+  </div>
+</div>
